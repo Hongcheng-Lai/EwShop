@@ -1,18 +1,24 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import {getHomeAllData} from "../network/home";
+import {onMounted} from "vue";
 
 export default {
+  setup() {
+    onMounted(()=>{
+      getHomeAllData().then((res)=>{
+        console.log(res.slides)
+      }).catch((err)=>{
+
+      })
+    })
+  },
   name: 'Home',
   components: {
-    HelloWorld
   }
 }
 </script>
